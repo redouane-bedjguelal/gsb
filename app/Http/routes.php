@@ -11,10 +11,9 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 });
-
 
 Route::get('/saisieEmploye', function () {
     return view('formEmploye');
@@ -25,3 +24,8 @@ Route::get('/pageEmploye', function () {
 });
 
 Route::post('/postEmploye', 'EmployeController@postAfficherEmploye');
+
+//
+Route::get('/', function() {
+    return view('index');
+});
