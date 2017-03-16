@@ -1,6 +1,10 @@
 <?php
 
 namespace App\metier;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Database\Eloquent\Model;
+use DB;
+
 
 class Invitation {
 
@@ -22,7 +26,9 @@ class Invitation {
     public function getInvitations() {
 // Dialogue avec la BDD
         $lesInvitations = DB::table('inviter')
-                ->Select()
+                ->join('praticien', 'inviter.id_praticien', '=', 'praticien.id_praticien')
+                ->join('type_praticien', 'praticien.id_type_praticien', '=', 'type_praticien.id_type_praticien')
+                ->Select('inviter.*','praticien.*', 'type_praticien.lib_type_praticien')
                 ->get();
         return $lesInvitations;
     }

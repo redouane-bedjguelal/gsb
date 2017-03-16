@@ -12,10 +12,12 @@
                 <th>Supprimer</th> 
             </tr>
         </thead>
-        <!--@foreach($mesFrais as $unFrais)-->
+        @foreach($lesInvitations as $uneInvit)
         <tr>   
-            <td> <!--{{ $unFrais->anneemois }}--> </td> 
-            <td style="text-align:center;"><a href="{{ url('/modifierFrais') }}/{{ $unFrais->id_frais }}">
+            <td>{{$uneInvit->lib_type_praticien}}</td>
+            <td>{{$uneInvit->nom_praticien}}</td>
+            <td>{{$uneInvit->id_activite_compl}}</td>
+            <td style="text-align:center;"><a href="{{ url('/modifierInvit') }}/{{$uneInvit->id_activite_compl}}/{{$uneInvit->id_praticien}}">
                     <span class="glyphicon glyphicon-pencil" data-toggle="tooltip" data-placement="top" title="Modifier"></span></a></td>
             <td style="text-align:center;">
                 <a class="glyphicon glyphicon-remove" data-toggle="tooltip" data-placement="top" title="Supprimer" href="#"
@@ -23,7 +25,7 @@
                 </a>
             </td>                    
         </tr>
-        <!--@endforeach-->
+        @endforeach
     </table>
 </div>
 @stop

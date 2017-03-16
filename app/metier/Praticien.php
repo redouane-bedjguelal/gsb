@@ -1,6 +1,10 @@
 <?php
 
 namespace App\metier;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Database\Eloquent\Model;
+use DB;
+
 
 class Praticien {
      //On déclare la table Praticien
