@@ -20,7 +20,7 @@ class VisiteurController extends Controller {
         $connected = $unVisiteur->login($login, $pwd);
         // Tentative de connexion
         if ($connected) {
-            return view('index');
+            return view('accueil');
         } else {
             $erreur = "Login ou mot de passe inconnu !";
             return view('signIn', compact('erreur'));

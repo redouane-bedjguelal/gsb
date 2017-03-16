@@ -35,6 +35,8 @@ class Visiteur extends Model {
         if ($visiteur) {
             if ($visiteur->pwd_visiteur == $pwd) {
                 Session::put('id', $visiteur->id_visiteur);
+                Session::put('nom', $visiteur->nom_visiteur);
+                Session::put('prenom', $visiteur->prenom_visiteur);
                 $connected = true;
             }
         }
