@@ -2,6 +2,7 @@
 @section('content')
 <div class="col-xs-12">
     <h4 class="gsb-titre">Connexion</h4>
+    {!! Form::open(['url' => 'SignIn']) !!}
     <table border="0">
         <tr>
             <td style="padding-right:10px;">Nom d'utilisateur</td>
@@ -15,5 +16,6 @@
             <td><input type="submit" class="gsb-btn" name="Valider"/></td>
         </tr>
     </table>
+    {!! Form::close() !!}
 </div>
 @stop
