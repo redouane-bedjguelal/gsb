@@ -13,7 +13,7 @@
             <td><input type="text" placeholder="Mot de passe" name="password"/>
         </tr>
         <tr>
-            <td><input type="submit" class="gsb-btn" name="Valider"/></td>
+            <td><br><input type="submit" class="gsb-btn" name="Valider"/></td>
         </tr>
     </table>
     {!! Form::close() !!}

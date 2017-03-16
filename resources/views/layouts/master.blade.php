@@ -35,6 +35,7 @@
                         <!--Navbar Brand-->
                         <a class="navbar-brand" href="{{ url('/') }}">GSB Commercial</a>
                         <!--Links-->
+                        @if (Session::get('id') == 0)
                         <ul class="nav navbar-nav">
                         </ul>
                         <ul class="nav navbar-nav" style="float: right;">
@@ -42,6 +43,18 @@
                                 <a class="nav-link" href="{{ url('connexion') }}">Connexion</a>
                             </li>
                         </ul>
+                        @endif
+                        @if (Session::get('id') > 0)
+                        <ul class="nav navbar-nav">
+                            <li><a href="{{ url('/liste') }}" data-toggle="collapse" data-target=".navbar-collapse.in">Lister</a></li>
+                            <li><a href="{{ url('/ajouter') }}" data-toggle="collapse" data-target=".navbar-collapse.in">Ajouter</a></li>  
+                        </ul>
+                        <ul class="nav navbar-nav" style="float: right;">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('deconnexion') }}">Déconnexion</a>
+                            </li>
+                        </ul>
+                        @endif
                     </div>
                     <!--/.Collapse content-->
                 </div>
