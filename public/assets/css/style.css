@@ -5,4 +5,6 @@
     border: 1px solid #e91e63;
     background: transparent;
     color: #e91e63;
+    min-width: 100px;
+    min-height: 30px;
 }
