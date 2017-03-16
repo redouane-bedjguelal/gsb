@@ -25,7 +25,11 @@ Route::get('/pageEmploye', function () {
 
 Route::post('/postEmploye', 'EmployeController@postAfficherEmploye');
 
-//
+// index
 Route::get('/', function() {
     return view('index');
+});
+// connexion
+Route::get('/connexion', function() {
+    return view('signIn');
 });

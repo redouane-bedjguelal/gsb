@@ -21,7 +21,7 @@
     <body class="img-gradient">
         <header>
             <!--Navbar-->
-            <nav class="navbar navbar-dark black navbar-fixed-top" style="position: fixed;">
+            <nav class="navbar navbar-dark pink navbar-fixed-top" style="position: fixed;">
 
                 <!--Collapse button-->
                 <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#collapseEx">
@@ -39,7 +39,7 @@
                         </ul>
                         <ul class="nav navbar-nav" style="float: right;">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url('signin') }}">Connexion</a>
+                                <a class="nav-link" href="{{ url('connexion') }}">Connexion</a>
                             </li>
                         </ul>
                     </div>
@@ -49,8 +49,14 @@
             </nav>
             <!--/.Navbar-->
         </header>
+        <body style="padding-top:50px;">
+            <div class="row">
+                <div class="container" style="padding-top:50px;">
         <!--yield-->
         @yield('content')
         <!--/.yield-->
+                </div>
+            </div>
+        </body>
     </body>
 </html>
