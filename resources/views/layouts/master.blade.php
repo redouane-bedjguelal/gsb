@@ -35,7 +35,7 @@
                         <!--Navbar Brand-->
                         <a class="navbar-brand" href="{{ url('/') }}">GSB Commercial</a>
                         <!--Links-->
-                        @if (Session::get('id') < 0)
+                        @if (Session::get('id') == 0)
                         <ul class="nav navbar-nav">
                         </ul>
                         <ul class="nav navbar-nav" style="float: right;">
@@ -44,7 +44,7 @@
                             </li>
                         </ul>
                         @endif
-                        @if (Session::get('id') == 0)
+                        @if (Session::get('id') > 0)
                         <ul class="nav navbar-nav">
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('lister') }}">Lister</a>
