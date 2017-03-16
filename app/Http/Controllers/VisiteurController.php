@@ -20,17 +20,17 @@ class VisiteurController extends Controller {
         $connected = $unVisiteur->login($login, $pwd);
         // Tentative de connexion
         if ($connected) {
-            return view('welcome');
+            return view('index');
         } else {
             $erreur = "Login ou mot de passe inconnu !";
-            return view('index', compact('erreur'));
+            return view('signIn', compact('erreur'));
         }
     }
 
     public function signOut() { //Déconnexion
         $unVisiteur = new Visiteur();
         $unVisiteur->logout();
-        return view('home');
+        return view('index');
     }
 
 }
