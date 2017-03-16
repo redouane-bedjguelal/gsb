@@ -28,5 +28,5 @@ class Activite_compl {
                 ->get();
         return $lesActivites;
     }
-
+    
 }

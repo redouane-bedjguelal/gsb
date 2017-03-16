@@ -26,17 +26,20 @@ class Praticien {
     public function getPraticien() {
         // Dialogue avec la BDD
         $lesPraticiens = DB::table('praticien')
-                ->Select()
+                ->join('type_praticien', 'praticien.id_type_praticien', '=', 'type_praticien.id_type_praticien')
+                ->Select('praticien.*', 'type_praticien.lib_type_praticien')
                 ->get();
         return $lesPraticiens;
     }
     
-    // Fonction récupérant un praticien selon son nom
-    public function getPraticienByNom($nom) {
+    // Fonction récupérant un praticien selon son nom ou son type
+    public function getUnPraticien($query) {
         // Dialogue avec la BDD
         $lePraticien = DB::table('praticien')
-                ->Select()
-                ->where('nom_praticien', $nom)
+                ->join('type_praticien', 'praticien.id_type_praticien', '=', 'type_praticien.id_type_praticien')
+                ->Select('praticien.*', 'type_praticien.lib_type_praticien')
+                ->where('nom_praticien','like', "%".$query."%")
+                ->orWhere('type_praticien.lib_type_praticien','like', "%".$query."%")
                 ->get();
         return $lePraticien;
     }
