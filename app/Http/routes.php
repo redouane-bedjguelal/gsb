@@ -33,3 +33,5 @@ Route::get('/', function() {
 Route::get('/connexion', function() {
     return view('signIn');
 });
+
+Route::post('/SignIn', 'VisiteurController@signIn');

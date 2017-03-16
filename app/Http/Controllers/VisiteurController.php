@@ -14,16 +14,16 @@ class VisiteurController extends Controller {
 
     public function signIn() {
         // Récupération des informations de connexion
-        $login = Request::input('login');
-        $pwd = Request::input('pwd');
+        $login = Request::input('username');
+        $pwd = Request::input('password');
         $unVisiteur = new Visiteur();
         $connected = $unVisiteur->login($login, $pwd);
         // Tentative de connexion
         if ($connected) {
-            return view('home');
+            return view('welcome');
         } else {
             $erreur = "Login ou mot de passe inconnu !";
-            return view('formLogin', compact('erreur'));
+            return view('index', compact('erreur'));
         }
     }
 
