@@ -34,3 +34,8 @@ Route::get('/deconnexion', 'VisiteurController@signOut');
 
 // Liste des invitations
 Route::get('/lister', 'InvitationController@getInvitations');
+
+// Ajouter des invitations
+Route::get('/ajouter', function() {
+    return view('ajouterInvitation');
+});
