@@ -12,30 +12,34 @@
             <td>Activité complémentaire</td>
             <td>
                 @if(isset($uneInvitation))
-                <select name="activite" required disabled>
+                <select name="activite" required hidden>
                     <option value = "{{$uneInvitation->id_activite_compl}}">{{$uneInvitation->date_activite or 0}} - {{$uneInvitation->motif_activite or 0}}</option>
+                </select>
+                {{$uneInvitation->date_activite or 0}} - {{$uneInvitation->motif_activite or 0}}
                 @else
                 <select name="activite" required>
-                @endif
                     @foreach ($lesActivites as $uneActivite)
                     <option value='{{$uneActivite->id_activite_compl}}'>{{$uneActivite->date_activite or 0}} - {{$uneActivite->motif_activite or 0}}</option>
                     @endforeach
                 </select>
+                @endif
             </td>
         </tr>
         <tr>
             <td>Praticien</td>
             <td>
                 @if(isset($uneInvitation))
-                <select name="praticien" required disabled>
+                <select name="praticien" required hidden>
                     <option value="{{$uneInvitation->id_praticien}}">{{$uneInvitation->nom_praticien}}</option>
+                </select>
+                {{$uneInvitation->nom_praticien}}
                 @else
                 <select name="praticien" required>
-                @endif
                     @foreach ($lesPraticiens as $unPraticien)
                     <option value='{{$unPraticien->id_praticien}}'>{{$unPraticien->nom_praticien or 0}}</option>
                     @endforeach
                 </select>
+                @endif
             </td>
         </tr>
         <tr>
@@ -44,20 +48,20 @@
         </tr>
         <tr>
             <td>
-                <label style="padding-top: 10px;">
+                <label style="padding-top: 10px; margin-bottom: 0;">
                 <input type="submit" class="gsb-btn" value="Valider"/>
                 <span class="glyphicon glyphicon-ok"></span></label>
-                <label>
+                <label style="padding-top: 10px; margin-bottom: 0;">
                 <input type="button" class="gsb-btn" 
                         onclick="javascript: window.location = '';" value="Annuler">
                     <span class="glyphicon glyphicon-remove"></span></label>
             </td>
         </tr>
-        <tr>
-            <td>
-                {{$erreur or ""}}
-            </td>
-        </tr>
     </table>
+    @if(isset($erreur))
+    <div class="gsb-error">
+        <span class="fa fa-minus-circle"></span> {{$erreur or ""}}
+    </div>
+    @endif
 </div>
 @stop

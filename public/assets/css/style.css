@@ -14,3 +14,10 @@
     background: -webkit-linear-gradient(0, #113665, #484c09);
     background: -moz-linear-gradient(0, #113665, #484c09);
 }
+.gsb-error {
+    margin-top: 10px;
+    padding: 0 5px 0 5px;
+    background-color: #faa;
+    border-left: 5px #833 solid;
+    color: #833;
+}
