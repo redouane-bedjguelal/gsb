@@ -1,6 +1,10 @@
 @extends('layouts.master')
 @section('content')
+@if(isset($uneInvitation))
+{!! Form::open(['url' => 'editInvite']) !!}
+@else
 {!! Form::open(['url' => 'addInvite']) !!}
+@endif
 <div class="col-xs-12">
     <h4 class="gsb-titre">Liste</h4>
     <table border="0">

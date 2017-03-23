@@ -42,7 +42,10 @@ Route::get('/ajouter', 'InvitationController@addInvitation');
 Route::post('/addInvite', 'InvitationController@ajouterInvitation');
 
 // Modifier une invitation
-Route::get('/modifier', 'InvitationController@addInvitation');
+Route::get('/modifierInvit/{activite}/{praticien}', ['uses' => 'InvitationController@editInvitation']);
 
 // Valider une modification
-Route::get('/editInvite', 'InvitationController@addInvitation');
+Route::post('/editInvite', 'InvitationController@modifierInvitation');
+
+// Supprimer une invitation
+Route::get('deleteInvite/{idAct}/{idPrat}', ['uses' => 'InvitationController@supprimerInvitation']);

@@ -1,10 +1,10 @@
 <?php
 
 namespace App\metier;
+
 use Illuminate\Support\Facades\Session;
 use Illuminate\Database\Eloquent\Model;
 use DB;
-
 
 class Invitation {
 
@@ -22,24 +22,34 @@ class Invitation {
         $this->id_activite_compl = 0;
     }
 
-// Fonction récupérant tous les praticiens dans la base
+// Fonction récupérant toutes les invitations dans la base
     public function getInvitations() {
 // Dialogue avec la BDD
         $lesInvitations = DB::table('inviter')
                 ->join('praticien', 'inviter.id_praticien', '=', 'praticien.id_praticien')
                 ->join('type_praticien', 'praticien.id_type_praticien', '=', 'type_praticien.id_type_praticien')
                 ->join('activite_compl', 'inviter.id_activite_compl', '=', 'activite_compl.id_activite_compl')
-                ->Select('inviter.*','praticien.*', 'type_praticien.lib_type_praticien', 'activite_compl.*')
+                ->Select('inviter.*', 'praticien.*', 'type_praticien.lib_type_praticien', 'activite_compl.*')
                 ->get();
         return $lesInvitations;
     }
 
-// Fonction récupérant un praticien selon son nom
+// Fonction récupérant les invitations selon un praticien 
     public function getInvitationByPraticien($id) {
 // Dialogue avec la BDD
         $invitation = DB::table('inviter')
                 ->Select()
                 ->where('id_praticien', $id)
+                ->get();
+        return $invitation;
+    }
+    
+    // Fonction récupérant une invitation
+    public function getUneInvitation($idActivite, $idPraticien) {
+// Dialogue avec la BDD
+        $invitation = DB::table('inviter')
+                ->Select()
+                ->where([['id_praticien', $idPraticien], ['id_activite_compl', $idActivite]])
                 ->get();
         return $invitation;
     }

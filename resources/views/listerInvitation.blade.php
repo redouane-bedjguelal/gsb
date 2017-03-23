@@ -21,7 +21,7 @@
                     <span class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="Modifier"></span></a></td>
             <td style="text-align:center;">
                 <a class="fa fa-remove" data-toggle="tooltip" data-placement="top" title="Supprimer" href="#"
-                   onclick="javascript:if (confirm('Suppression confirmée ?')){ window.location ='{{ url('/supprimerFrais')}}/'; }">
+                   onclick="javascript:if (confirm('Suppression confirmée ?')){ window.location ='{{ url('/deleteInvite')}}/{{$uneInvit->id_activite_compl}}/{{$uneInvit->id_praticien}}'; }">
                 </a>
             </td>                    
         </tr>
