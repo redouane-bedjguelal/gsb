@@ -4,8 +4,9 @@
     
 </script>
 <div class="col-xs-12">
-    <h4 class="gsb-color">Liste</h4>
-    <table class="table table-bordered table-striped table-responsive">
+    <h4 class="gsb-color" style="float: left;">Liste</h4>
+    <div style="float: right"><input type="text" name="search"/></div>
+    <table class="table table-bordered table-striped table-responsive" style="margin-top: 50px;">
         <thead>
             <tr>
                 <th width="40%">Type Praticien</th> 
