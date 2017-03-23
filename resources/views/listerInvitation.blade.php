@@ -1,8 +1,5 @@
 @extends('layouts.master')
 @section('content')
-<script type="text/javascript">
-    
-</script>
 <div class="col-xs-12">
     <h4 class="gsb-color" style="float: left;">Liste</h4>
     <div style="float: right"><input type="text" name="search"/></div>
@@ -31,5 +28,6 @@
         </tr>
         @endforeach
     </table>
+    <div id="results"></div>
 </div>
 @stop
