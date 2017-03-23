@@ -17,5 +17,6 @@
         </tr>
     </table>
     {!! Form::close() !!}
+    {{$erreur or ""}}
 </div>
 @stop
