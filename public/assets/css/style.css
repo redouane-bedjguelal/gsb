@@ -1,10 +1,16 @@
-.gsb-titre {
-    color: #e91e63;
+.gsb-color {
+    background: -webkit-linear-gradient(0, #113665, #484c09);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 .gsb-btn {
-    border: 1px solid #e91e63;
-    background: transparent;
-    color: #e91e63;
+    background: -webkit-linear-gradient(0, #113665, #484c09);
+    color: #fff;
     min-width: 100px;
     min-height: 30px;
+    border: none;
+}
+.gsb-navbar {
+    background: -webkit-linear-gradient(0, #113665, #484c09);
+    background: -moz-linear-gradient(0, #113665, #484c09);
 }

@@ -6,7 +6,7 @@
 {!! Form::open(['url' => 'addInvite']) !!}
 @endif
 <div class="col-xs-12">
-    <h4 class="gsb-titre">Liste</h4>
+    <h4 class="gsb-color">Liste</h4>
     <table border="0">
         <tr>
             <td>Activité complémentaire</td>

@@ -21,7 +21,7 @@
     <body class="img-gradient">
         <header>
             <!--Navbar-->
-            <nav class="navbar navbar-dark pink navbar-fixed-top" style="position: fixed;">
+            <nav class="navbar navbar-dark blue navbar-fixed-top gsb-navbar" style="position: fixed;">
 
                 <!--Collapse button-->
                 <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#collapseEx">
