@@ -18,9 +18,9 @@
             <td>{{$uneInvit->nom_praticien}}</td>
             <td>{{$uneInvit->date_activite}} - {{$uneInvit->motif_activite}}</td>
             <td style="text-align:center;"><a href="{{ url('/modifierInvit') }}/{{$uneInvit->id_activite_compl}}/{{$uneInvit->id_praticien}}">
-                    <span class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="Modifier"></span></a></td>
+                    <span class="fa fa-pencil gsb-color" data-toggle="tooltip" data-placement="top" title="Modifier"></span></a></td>
             <td style="text-align:center;">
-                <a class="fa fa-remove" data-toggle="tooltip" data-placement="top" title="Supprimer" href="#"
+                <a class="fa fa-remove gsb-color" data-toggle="tooltip" data-placement="top" title="Supprimer" href="#"
                    onclick="javascript:if (confirm('Suppression confirmée ?')){ window.location ='{{ url('/deleteInvite')}}/{{$uneInvit->id_activite_compl}}/{{$uneInvit->id_praticien}}'; }">
                 </a>
             </td>                    
