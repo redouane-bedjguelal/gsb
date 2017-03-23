@@ -6,7 +6,14 @@
 {!! Form::open(['url' => 'addInvite']) !!}
 @endif
 <div class="col-xs-12">
-    <h4 class="gsb-color">Liste</h4>
+    <div style="float:left;">
+    @if(isset($uneInvitation))
+    <h4 class="gsb-color" style="float: left;">Modifier</h4>
+    @else
+    <h4 class="gsb-color" style="float: left;">Ajouter</h4>
+    @endif
+    </div>
+    <div style="float:left; clear:left; margin-top:10px;">
     <table border="0">
         <tr>
             <td>Activité complémentaire</td>
@@ -58,8 +65,9 @@
             </td>
         </tr>
     </table>
+    </div>
     @if(isset($erreur))
-    <div class="gsb-error">
+    <div class="gsb-error" style="float:left;">
         <span class="fa fa-minus-circle"></span> {{$erreur or ""}}
     </div>
     @endif
