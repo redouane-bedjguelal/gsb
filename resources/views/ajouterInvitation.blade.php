@@ -1,16 +1,16 @@
 @extends('layouts.master')
 @section('content')
-{!! Form::open(['url' => 'validerFrais']) !!}
+{!! Form::open(['url' => 'addInvite']) !!}
 <div class="col-xs-12">
     <h4 class="gsb-titre">Liste</h4>
     <table border="0">
-        <input type="hidden" name="id_frais" value=""/>
         <tr>
             <td>Activité complémentaire</td>
             <td>
                 <select name="activite" required>
-                    <option>Oui</option>
-                    <option>Oui</option>
+                    @foreach ($lesActivites as $uneActivite)
+                    <option value='{{$uneActivite->id_activite_compl}}'>{{$uneActivite->date_activite or 0}} - {{$uneActivite->motif_activite or 0}}</option>
+                    @endforeach
                 </select>
             </td>
         </tr>
@@ -18,14 +18,15 @@
             <td>Praticien</td>
             <td>
                 <select name="praticien" required>
-                    <option>Oui</option>
-                    <option>Oui</option>
+                    @foreach ($lesPraticiens as $unPraticien)
+                    <option value='{{$unPraticien->id_praticien}}'>{{$unPraticien->nom_praticien or 0}}</option>
+                    @endforeach
                 </select>
             </td>
         </tr>
         <tr>
             <td>Spécialite</td>
-            <td><input type="text" value=""/></td>
+            <td><input type="text" name="specialiste" value=""/></td>
         </tr>
         <tr>
             <td>

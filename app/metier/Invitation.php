@@ -28,7 +28,8 @@ class Invitation {
         $lesInvitations = DB::table('inviter')
                 ->join('praticien', 'inviter.id_praticien', '=', 'praticien.id_praticien')
                 ->join('type_praticien', 'praticien.id_type_praticien', '=', 'type_praticien.id_type_praticien')
-                ->Select('inviter.*','praticien.*', 'type_praticien.lib_type_praticien')
+                ->join('activite_compl', 'inviter.id_activite_compl', '=', 'activite_compl.id_activite_compl')
+                ->Select('inviter.*','praticien.*', 'type_praticien.lib_type_praticien', 'activite_compl.*')
                 ->get();
         return $lesInvitations;
     }

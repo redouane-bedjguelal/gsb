@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Request;
 use App\metier\Invitation;
+use App\metier\Praticien;
+use App\metier\Activite_compl;
 
 class InvitationController extends Controller {
 
@@ -28,11 +30,36 @@ class InvitationController extends Controller {
         return view('listerInvitation', compact('lesInvitations'));
     }
     
-    public function ajouterInvitation($idActivite, $idPraticien, $specialiste){
+    public function addInvitation(){
+        
+        $praticien = new Praticien();
+        $activite = new Activite_compl();
+        
+        $lesPraticiens = $praticien->getPraticien();
+        $lesActivites = $activite->getActivite();
+        
+        return view('ajouterInvitation',compact('lesPraticiens', 'lesActivites'));
+    }
+    
+    public function ajouterInvitation(){
         $uneInvitation = new Invitation();
+        $idActivite = Request::input('activite');
+        $idPraticien = Request::input('praticien');
+        $specialiste = Request::input('specialiste');
         $uneInvitation->addInvitation($idActivite, $idPraticien, $specialiste);
         // On affiche la liste
-        return view('listerInvitation', compact('lesInvitations'));
+        return redirect('/lister');
+    }
+    
+    public function editInvitation(){
+        
+        $praticien = new Praticien();
+        $activite = new Activite_compl();
+        
+        $lesPraticiens = $praticien->getPraticien();
+        $lesActivites = $activite->getActivite();
+        
+        return view('ajouterInvitation',compact('lesPraticiens', 'lesActivites'));
     }
     
     public function modifierInvitation($idActivite, $idPraticien, $specialiste){

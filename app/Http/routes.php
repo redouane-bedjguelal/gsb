@@ -35,7 +35,14 @@ Route::get('/deconnexion', 'VisiteurController@signOut');
 // Liste des invitations
 Route::get('/lister', 'InvitationController@getInvitations');
 
-// Ajouter des invitations
-Route::get('/ajouter', function() {
-    return view('ajouterInvitation');
-});
+// Ajouter une invitation
+Route::get('/ajouter', 'InvitationController@addInvitation');
+
+// Valider l'ajout d'une invitation
+Route::post('/addInvite', 'InvitationController@ajouterInvitation');
+
+// Modifier une invitation
+Route::get('/modifier', 'InvitationController@addInvitation');
+
+// Valider une modification
+Route::get('/editInvite', 'InvitationController@addInvitation');
