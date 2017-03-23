@@ -15,7 +15,7 @@ class InvitationController extends Controller {
         // On affiche la liste
         return view('listerInvitation', compact('lesInvitations'));
     }
-        
+
     public function getInvitationByPraticien($id) {
         $uneInvitation = new Invitation();
         $lesInvitations = $uneInvitation->getInvitationByPraticien($id);
@@ -23,65 +23,80 @@ class InvitationController extends Controller {
         return view('listerInvitation', compact('lesInvitations'));
     }
 
-    public function supprimerInvitation($idActivite, $idPraticien){
+    public function supprimerInvitation($idActivite, $idPraticien) {
         $uneInvitation = new Invitation();
         $uneInvitation->deleteInvitation($idActivite, $idPraticien);
         // On affiche la liste
         return redirect('/lister');
     }
-    
-    public function addInvitation(){
-        
+
+    public function addInvitation() {
+
         // Création de variables tampon
         $praticien = new Praticien();
         $activite = new Activite_compl();
-        
+
         // Récupération des listes (pour les select)
         $lesPraticiens = $praticien->getPraticien();
         $lesActivites = $activite->getActivite();
-        
+
         // Renvoie des listes à la page de formulaire
-        return view('ajouterInvitation',compact('lesPraticiens', 'lesActivites'));
+        return view('ajouterInvitation', compact('lesPraticiens', 'lesActivites'));
     }
-    
-    public function ajouterInvitation(){
+
+    public function ajouterInvitation() {
         // Création d'une invitation
         $uneInvitation = new Invitation();
-        
+
         // Récupération des valeurs du formulaire d'ajout
         $idActivite = Request::input('activite');
         $idPraticien = Request::input('praticien');
         $specialiste = Request::input('specialiste');
-        
-        // Ajout de l'invitation
-        $uneInvitation->addInvitation($idActivite, $idPraticien, $specialiste);
-        
-        // On affiche la liste
-        return redirect('/lister');
+
+        // Vérification de l'existence d'une ligne semblable
+        if ($uneInvitation->getUneInvitation($idActivite, $idPraticien) != null) {
+            // Création de variables tampon
+            $erreur = "Une ligne semblable existe déjà dans la base.";
+            $praticien = new Praticien();
+            $activite = new Activite_compl();
+
+            // Récupération des listes (pour les select)
+            $lesPraticiens = $praticien->getPraticien();
+            $lesActivites = $activite->getActivite();
+
+            return view('ajouterInvitation', compact('lesPraticiens', 'lesActivites', 'erreur'));
+        } else {
+            // Ajout de l'invitation
+            $uneInvitation->addInvitation($idActivite, $idPraticien, $specialiste);
+
+            // On affiche la liste
+            return redirect('/lister');
+        }
     }
-    
-    public function editInvitation($idActivite, $idPraticien){
-        
+
+    public function editInvitation($idActivite, $idPraticien) {
+
         $invitation = new Invitation();
         $praticien = new Praticien();
         $activite = new Activite_compl();
-        
+
         $uneInvitation = $invitation->getUneInvitation($idActivite, $idPraticien);
         $lesPraticiens = $praticien->getPraticien();
         $lesActivites = $activite->getActivite();
-        
-        return view('ajouterInvitation',compact('lesPraticiens', 'lesActivites', 'uneInvitation'));
+
+        return view('ajouterInvitation', compact('lesPraticiens', 'lesActivites', 'uneInvitation'));
     }
-    
-    public function modifierInvitation(){
+
+    public function modifierInvitation() {
         $uneInvitation = new Invitation();
-        
+
         $idActivite = Request::input('activite');
         $idPraticien = Request::input('praticien');
         $specialiste = Request::input('specialiste');
-        
+
         $uneInvitation->editInvitation($idActivite, $idPraticien, $specialiste);
         // On affiche la liste
         return redirect('/lister');
     }
+
 }

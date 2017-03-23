@@ -48,9 +48,12 @@ class Invitation {
     public function getUneInvitation($idActivite, $idPraticien) {
 // Dialogue avec la BDD
         $invitation = DB::table('inviter')
-                ->Select()
-                ->where([['id_praticien', $idPraticien], ['id_activite_compl', $idActivite]])
-                ->get();
+                ->join('praticien', 'inviter.id_praticien', '=', 'praticien.id_praticien')
+                ->join('type_praticien', 'praticien.id_type_praticien', '=', 'type_praticien.id_type_praticien')
+                ->join('activite_compl', 'inviter.id_activite_compl', '=', 'activite_compl.id_activite_compl')
+                ->Select('inviter.*', 'praticien.*', 'type_praticien.lib_type_praticien', 'activite_compl.*')
+                ->where([['inviter.id_activite_compl', $idActivite], ['inviter.id_praticien', $idPraticien]])
+                ->first();
         return $invitation;
     }
 

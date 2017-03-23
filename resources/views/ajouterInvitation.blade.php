@@ -13,6 +13,7 @@
             <td>
                 @if(isset($uneInvitation))
                 <select name="activite" required disabled>
+                    <option value = "{{$uneInvitation->id_activite_compl}}">{{$uneInvitation->date_activite or 0}} - {{$uneInvitation->motif_activite or 0}}</option>
                 @else
                 <select name="activite" required>
                 @endif
@@ -27,6 +28,7 @@
             <td>
                 @if(isset($uneInvitation))
                 <select name="praticien" required disabled>
+                    <option value="{{$uneInvitation->id_praticien}}">{{$uneInvitation->nom_praticien}}</option>
                 @else
                 <select name="praticien" required>
                 @endif
@@ -38,7 +40,7 @@
         </tr>
         <tr>
             <td>Spécialite</td>
-            <td><input type="text" name="specialiste" value="" size="1" maxlength="1"/></td>
+            <td><input type="text" name="specialiste" value="{{$uneInvitation->specialiste or ''}}" size="1" maxlength="1"/></td>
         </tr>
         <tr>
             <td>
@@ -49,6 +51,11 @@
                 <input type="button" class="gsb-btn" 
                         onclick="javascript: window.location = '';" value="Annuler">
                     <span class="glyphicon glyphicon-remove"></span></label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{$erreur or ""}}
             </td>
         </tr>
     </table>
