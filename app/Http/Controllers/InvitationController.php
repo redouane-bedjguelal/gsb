@@ -98,5 +98,13 @@ class InvitationController extends Controller {
         // On affiche la liste
         return redirect('/lister');
     }
+    
+    public function searchInvite(){
+        $query = Request::input('search');
+        $invitation = new Invitation();
+        
+        $lesInvitations = $invitation->searchInvitation($query);
+        return view('listerInvitation', compact('lesInvitations'));
+    }
 
 }

@@ -49,3 +49,6 @@ Route::post('/editInvite', 'InvitationController@modifierInvitation');
 
 // Supprimer une invitation
 Route::get('deleteInvite/{idAct}/{idPrat}', ['uses' => 'InvitationController@supprimerInvitation']);
+
+// Recherche des invitations
+Route::post('/searchInvite', 'InvitationController@searchInvite');

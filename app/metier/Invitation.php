@@ -44,6 +44,20 @@ class Invitation {
         return $invitation;
     }
     
+    // Fonction récupérant les invitations sur le nom praticien ou le type
+    public function searchInvitation($query){
+        // Dialogue avec la BDD
+        $lesInvitations = DB::table('inviter')
+                ->join('praticien', 'inviter.id_praticien', '=', 'praticien.id_praticien')
+                ->join('type_praticien', 'praticien.id_type_praticien', '=', 'type_praticien.id_type_praticien')
+                ->join('activite_compl', 'inviter.id_activite_compl', '=', 'activite_compl.id_activite_compl')
+                ->Select('inviter.*', 'praticien.*', 'type_praticien.lib_type_praticien', 'activite_compl.*')
+                ->where('praticien.nom_praticien', 'like', '%'.$query.'%')
+                ->orwhere('type_praticien.lib_type_praticien', 'like', '%'.$query.'%')
+                ->get();
+        return $lesInvitations;
+    }
+    
     // Fonction récupérant une invitation
     public function getUneInvitation($idActivite, $idPraticien) {
 // Dialogue avec la BDD
@@ -61,7 +75,7 @@ class Invitation {
     public function deleteInvitation($idActivite, $idPraticien) {
 // Dialogue avec la BDD
         DB::table('inviter')
-                ->where([['id_activite_compl', $idActivite], ['id_praticien', $idPraticien],])
+                ->where([['id_activite_compl', $idActivite], ['id_praticien', $idPraticien]])
                 ->delete();
     }
 
@@ -76,8 +90,8 @@ class Invitation {
     public function editInvitation($idActivite, $idPraticien, $specialiste) {
 // Dialogue avec la BDD
         DB::table('inviter')
-                ->where([['id_activite_compl', $idActivite], ['id_praticien', $idPraticien],])
-                ->update(['id_activite_compl' => $idActivite, 'id_praticien' => $idPraticien, 'specialiste' => $specialiste]);
+                ->where([['id_activite_compl', $idActivite], ['id_praticien', $idPraticien]])
+                ->update(['specialiste' => $specialiste]);
     }
 
 }
