@@ -42,12 +42,13 @@
         </tr>
         <tr>
             <td>
-                <button type="submit" class="btn btn-default btn-primary">
-                    <span class="glyphicon glyphicon-ok"></span> Valider
-                </button>
-                <button type="button" class="btn btn-default btn-primary" 
-                        onclick="javascript: window.location = '';">
-                    <span class="glyphicon glyphicon-remove"></span> Annuler</button>
+                <label style="padding-top: 10px;">
+                <input type="submit" class="gsb-btn" value="Valider"/>
+                <span class="glyphicon glyphicon-ok"></span></label>
+                <label>
+                <input type="button" class="gsb-btn" 
+                        onclick="javascript: window.location = '';" value="Annuler">
+                    <span class="glyphicon glyphicon-remove"></span></label>
             </td>
         </tr>
     </table>
