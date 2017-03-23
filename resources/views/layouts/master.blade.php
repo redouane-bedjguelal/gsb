@@ -33,7 +33,7 @@
                     <!--Collapse content-->
                     <div class="collapse navbar-toggleable-xs" id="collapseEx">
                         <!--Navbar Brand-->
-                        <a class="navbar-brand" href="{{ url('/') }}">GSB Commercial</a>
+                        <a class="navbar-brand" href="{{ url('/') }}"><span class="fa fa-align-right"></span><span class="fa fa-wheelchair-alt"></span> GSB Commercial</a>
                         <!--Links-->
                         @if (Session::get('id') == 0)
                         <ul class="nav navbar-nav">
@@ -67,7 +67,7 @@
             <!--/.Navbar-->
         </header>
         <body style="padding-top:50px;">
-            <div class="row">
+            <div class="row" style="margin:0 0 20px 0;">
                 <div class="container" style="padding-top:50px;">
         <!--yield-->
         @yield('content')
