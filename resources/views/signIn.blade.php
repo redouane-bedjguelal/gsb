@@ -17,6 +17,10 @@
         </tr>
     </table>
     {!! Form::close() !!}
-    {{$erreur or ""}}
+    @if(isset($erreur))
+    <div class="gsb-error" style="float:left;">
+        <span class="fa fa-minus-circle"></span> {{$erreur or ""}}
+    </div>
+    @endif
 </div>
 @stop
