@@ -12,22 +12,37 @@ class InvitationController extends Controller {
     public function getInvitations() {
         $uneInvitation = new Invitation();
         $lesInvitations = $uneInvitation->getInvitations();
-        // On affiche la liste
-        return view('listerInvitation', compact('lesInvitations'));
+        if (\Illuminate\Support\Facades\Session::get('id')!=0) {
+            // On affiche la liste
+            return view('listerInvitation', compact('lesInvitations'));
+        } else {
+            $erreur = "Vous devez vous connecter pour accéder à cette page";
+            return view('signIn', compact('erreur'));
+        }
     }
 
     public function getInvitationByPraticien($id) {
         $uneInvitation = new Invitation();
         $lesInvitations = $uneInvitation->getInvitationByPraticien($id);
-        // On affiche la liste
-        return view('listerInvitation', compact('lesInvitations'));
+        if (\Illuminate\Support\Facades\Session::get('id')!=0) {
+            // On affiche la liste
+            return view('listerInvitation', compact('lesInvitations'));
+        } else {
+            $erreur = "Vous devez vous connecter pour accéder à cette page";
+            return view('signIn', compact('erreur'));
+        }
     }
 
     public function supprimerInvitation($idActivite, $idPraticien) {
         $uneInvitation = new Invitation();
         $uneInvitation->deleteInvitation($idActivite, $idPraticien);
-        // On affiche la liste
-        return redirect('/lister');
+        if (\Illuminate\Support\Facades\Session::get('id')!=0) {
+            // On affiche la liste
+            return redirect('/lister');
+        } else {
+            $erreur = "Vous devez vous connecter pour accéder à cette page";
+            return view('signIn', compact('erreur'));
+        }
     }
 
     public function addInvitation() {
@@ -40,8 +55,13 @@ class InvitationController extends Controller {
         $lesPraticiens = $praticien->getPraticien();
         $lesActivites = $activite->getActivite();
 
-        // Renvoie des listes à la page de formulaire
-        return view('ajouterInvitation', compact('lesPraticiens', 'lesActivites'));
+        if (\Illuminate\Support\Facades\Session::get('id')!=0) {
+            // Renvoie des listes à la page de formulaire
+            return view('ajouterInvitation', compact('lesPraticiens', 'lesActivites'));
+        } else {
+            $erreur = "Vous devez vous connecter pour accéder à cette page";
+            return view('signIn', compact('erreur'));
+        }
     }
 
     public function ajouterInvitation() {
@@ -64,13 +84,23 @@ class InvitationController extends Controller {
             $lesPraticiens = $praticien->getPraticien();
             $lesActivites = $activite->getActivite();
 
-            return view('ajouterInvitation', compact('lesPraticiens', 'lesActivites', 'erreur'));
+            if (\Illuminate\Support\Facades\Session::get('id')!=0) {
+                return view('ajouterInvitation', compact('lesPraticiens', 'lesActivites', 'erreur'));
+            } else {
+                $erreur = "Vous devez vous connecter pour accéder à cette page";
+            return view('signIn', compact('erreur'));
+            }
         } else {
             // Ajout de l'invitation
             $uneInvitation->addInvitation($idActivite, $idPraticien, $specialiste);
 
-            // On affiche la liste
-            return redirect('/lister');
+            if (\Illuminate\Support\Facades\Session::get('id')!=0) {
+                // On affiche la liste
+                return redirect('/lister');
+            } else {
+                $erreur = "Vous devez vous connecter pour accéder à cette page";
+            return view('signIn', compact('erreur'));
+            }
         }
     }
 
@@ -84,7 +114,12 @@ class InvitationController extends Controller {
         $lesPraticiens = $praticien->getPraticien();
         $lesActivites = $activite->getActivite();
 
-        return view('ajouterInvitation', compact('lesPraticiens', 'lesActivites', 'uneInvitation'));
+        if (\Illuminate\Support\Facades\Session::get('id')!=0) {
+            return view('ajouterInvitation', compact('lesPraticiens', 'lesActivites', 'uneInvitation'));
+        } else {
+            $erreur = "Vous devez vous connecter pour accéder à cette page";
+            return view('signIn', compact('erreur'));
+        }
     }
 
     public function modifierInvitation() {
@@ -95,16 +130,26 @@ class InvitationController extends Controller {
         $specialiste = Request::input('specialiste');
 
         $uneInvitation->editInvitation($idActivite, $idPraticien, $specialiste);
-        // On affiche la liste
-        return redirect('/lister');
+        if (\Illuminate\Support\Facades\Session::get('id')!=0) {
+            // On affiche la liste
+            return redirect('/lister');
+        } else {
+            $erreur = "Vous devez vous connecter pour accéder à cette page";
+            return view('signIn', compact('erreur'));
+        }
     }
-    
-    public function searchInvite(){
+
+    public function searchInvite() {
         $query = Request::input('search');
         $invitation = new Invitation();
-        
+
         $lesInvitations = $invitation->searchInvitation($query);
-        return view('listerInvitation', compact('lesInvitations'));
+        if (\Illuminate\Support\Facades\Session::get('id')!=0) {
+            return view('listerInvitation', compact('lesInvitations'));
+        } else {
+            $erreur = "Vous devez vous connecter pour accéder à cette page";
+            return view('signIn', compact('erreur'));
+        }
     }
 
 }
