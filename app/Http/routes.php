@@ -22,6 +22,10 @@ Route::post('/postEmploye', 'EmployeController@postAfficherEmploye');
 Route::get('/', function() {
     return view('index');
 });
+// page inexistante
+Route::get('/erreur', function() {
+    return view('unknownPage');
+});
 // connexion
 Route::get('/connexion', function() {
     return view('signIn');
