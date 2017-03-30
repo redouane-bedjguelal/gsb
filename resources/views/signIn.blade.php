@@ -10,7 +10,7 @@
         </tr>
         <tr>
             <td style="padding-right:10px;">Mot de passe</td>
-            <td><input type="text" placeholder="Mot de passe" name="password"/>
+            <td><input type="password" placeholder="Mot de passe" name="password"/>
         </tr>
         <tr>
             <td><br><input type="submit" class="gsb-btn" name="Valider"/></td>

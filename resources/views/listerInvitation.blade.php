@@ -3,7 +3,7 @@
 <div class="col-xs-12">
     <h4 class="gsb-color" style="float: left;">Liste</h4>
     {!! Form::open(['url' => 'searchInvite']) !!}
-    <div style="float: right"><input type="text" name="search"/></div>
+    <div style="float: right"><input type="text" name="search" placeholder="Rechercher"/></div>
     {!! Form::close() !!}
     <table class="table table-bordered table-striped table-responsive" style="margin-top: 50px;">
         <thead>
